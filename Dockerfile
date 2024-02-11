@@ -108,9 +108,7 @@ RUN \
     /app/immich/machine-learning/ann && \
   echo "**** change machine learning dependencies for cuda acceleration ****" && \
   cd /app/immich/machine-learning/cuda && \
-  poetry source add --priority=supplemental ort https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ort-cuda-12-nightly/pypi/simple/ && \
-  poetry add --source ort --group cuda ort-nightly-gpu && \
-  poetry remove --group cuda onnxruntime-gpu && \
+  poetry add --group cuda onnxruntime-gpu@1.17.0  && \
   echo "**** install immich cli (immich upload) ****" && \
     npm install -g --prefix /tmp/cli @immich/cli && \
     mv /tmp/cli/lib/node_modules/@immich/cli /app/cli && \
